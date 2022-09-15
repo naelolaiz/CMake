@@ -147,4 +147,16 @@ adjust options for the generated Graphviz files.
 
  * Mandatory: NO
  * Default: TRUE
+
+Per-target node-specific graphviz attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Extra graphviz attributes can be specified to individual cmake targets setting the target property
+``GRAPHVIZ_EXTRA_NODE_ATTRIBUTES``. For instance to make myLibrary node blue:
+
+.. code-block:: cmake
+  add_library(myLibrary myLibrary.cpp)
+  set_target_properties(myLibrary PROPERTIES GRAPHVIZ_EXTRA_NODE_ATTRIBUTES
+                        ", style = filled, fillcolor = blue")
+
 #]=======================================================================]

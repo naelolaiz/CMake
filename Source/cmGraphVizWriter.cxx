@@ -446,8 +446,12 @@ void cmGraphVizWriter::WriteNode(cmGeneratedFileStream& fs,
   auto const itemNameWithAliases = this->ItemNameWithAliases(itemName);
   auto const escapedLabel = EscapeForDotFile(itemNameWithAliases);
 
+  auto const extraNodeAttributes = item.Target ? 
+                                   item.Target->GetSafeProperty("GRAPHVIZ_EXTRA_NODE_ATTRIBUTES")
+                                   : "";
+
   fs << "    \"" << nodeName << "\" [ label = \"" << escapedLabel
-     << "\", shape = " << getShapeForTarget(item) << " ];\n";
+     << "\", shape = " << getShapeForTarget(item) << extraNodeAttributes.c_str() << " ];\n";
 }
 
 void cmGraphVizWriter::WriteConnection(cmGeneratedFileStream& fs,
