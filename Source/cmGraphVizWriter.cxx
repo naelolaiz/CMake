@@ -446,7 +446,7 @@ void cmGraphVizWriter::WriteNode(cmGeneratedFileStream& fs,
   auto const itemNameWithAliases = this->ItemNameWithAliases(itemName);
   auto const escapedLabel = EscapeForDotFile(itemNameWithAliases);
 
-  auto const extraNodeAttributes = item.Target ? 
+  auto const extraNodeAttributes = item.Target ?
                                    item.Target->GetSafeProperty("GRAPHVIZ_EXTRA_NODE_ATTRIBUTES")
                                    : "";
 
